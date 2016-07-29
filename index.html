@@ -2,31 +2,47 @@
 <html>
 <head>
   <title>Meal Creations</title>
+  <link rel="stylesheet" href="reset.css"/>
   <link rel="stylesheet" href="main.css"/>
+  <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-  <header>
-    <div class="content">
-      <ul class ="list">
-        <li>Favorite Recipes</li>
-        <li>My Profile</li>
-        <li>Connections</li>
+  <header class="header">
+    <h1>Recipe Exchange</h1>
+    <nav class="navbar">
+      <ul class="topnav">
+        <li><a href="#">Favorite Recipes</a></li>
+        <li><a href="#">My Profile</a></li>
+        <li><a href="#">Connections</a></li>
       </ul>
-      <h1>Meal Creations</h1>
-    </div>
+    </nav>
   </header>
-  <h3>Need Recipe Ideas? Enter food terms to generate meal options. Store your favorite recipes and share them with others!</h3>
-  <form id="search">
-    <input id="query" type="text">
-    <input type="submit" id="submit" value="Get Recipes!">
-  </form>
-  <div class="search-results">
-    <h4>Recipes</h4>
-    <!-- <button class="favorite">Favorite</button> -->
-    <!-- <button id="previous">Previous</button>   <button id="next">Next</button> -->
-  </div>
+  <section class="recipe-search">
+    <h3>Need Recipe Ideas? Enter food terms to generate meal options. Store your favorite recipes and share them with others!</h3>
+    <form id="search">
+      <input id="query" type="text">
+      <input type="submit" id="submit" value="Get Recipes!">
+    </form>
+    <div class="search-results">
+      <h4>Recipes</h4>
+      <ul class="recipe-details">
+        <li><img class="image" src="tacos.jpg" width="80" height="80"></li>
+        <li class="title">Title: 
+          <h1 id="recipe-title"></h1></li>
+          <li class="category">Category:<h1 id="recipe-category">Salads</h1></li>
+          <li class="subcategory">Sub-category:
+            <h1 id="recipe-subcategory"> </h1></li>
+            <li class="stars">Star-rating:
+              <h1 id="star-rating">4</h1></li>
+              <li class="recipe">Recipe:
+                <h1 id="recipe-details"> </h1></li>
+              </ul>
+              <!-- <button class="favorite">Favorite</button> -->
+              <!-- <button id="previous">Previous</button>   <button id="next">Next</button> -->
+            </div>
 
-  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>   
-  <script type='text/javascript' src='app.js'></script>
-</body>
-</html>
+            <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>   
+            <script type='text/javascript' src='app.js'></script>
+          </section>
+        </body>
+        </html>

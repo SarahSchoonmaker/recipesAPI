@@ -1,12 +1,3 @@
-$(function(){
-    $('#submit').submit(function (event) {
-        event.preventDefault();
-        getRecipes(search);
-        $('#previous').css("display", "inline");
-        $('#next').css("display", "inline");
-    });
-});
-
 function getRecipes(search) {
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var TitleKeyword = "lasagna";
