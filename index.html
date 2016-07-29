@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Meal Creations</title>
-  <link rel="stylesheet" href="reset.css"/>
-  <link rel="stylesheet" href="main.css"/>
-  <meta name="viewport" content="width=device-width" />
-</head>
-<body>
-  <header class="header">
-    <h1>Recipe Exchange</h1>
-    <nav class="navbar">
-      <ul class="topnav">
-        <li><a href="#">Favorite Recipes</a></li>
-        <li><a href="#">My Profile</a></li>
-        <li><a href="#">Connections</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section class="recipe-search">
-    <h3>Need Recipe Ideas? Enter food terms to generate meal options. Store your favorite recipes and share them with others!</h3>
-    <form id="search">
-      <input id="query" type="text">
-      <input type="submit" id="submit" value="Get Recipes!">
-    </form>
-    <div class="search-results">
-      <h4>Recipes</h4>
-      <ul class="recipe-details">
-        <li><img class="image" src="tacos.jpg" width="80" height="80"></li>
-        <li class="title">Title: 
-          <h1 id="recipe-title"></h1></li>
-          <li class="category">Category:<h1 id="recipe-category">Salads</h1></li>
-          <li class="subcategory">Sub-category:
-            <h1 id="recipe-subcategory"> </h1></li>
-            <li class="stars">Star-rating:
-              <h1 id="star-rating">4</h1></li>
-              <li class="recipe">Recipe:
-                <h1 id="recipe-details"> </h1></li>
-              </ul>
-              <!-- <button class="favorite">Favorite</button> -->
-              <!-- <button id="previous">Previous</button>   <button id="next">Next</button> -->
-            </div>
+    <head>
+	<title>Meal Creations</title>
+	<link rel="stylesheet" href="reset.css"/>
+	<link rel="stylesheet" href="main.css"/>
+	<meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+	<header class="header">
+	    <h1>Recipe Exchange</h1>
+	    <nav class="navbar">
+		<ul class="topnav">
+		    <li><a href="#">Favorite Recipes</a></li>
+		    <li><a href="#">My Profile</a></li>
+		    <li><a href="#">Connections</a></li>
+		</ul>
+	    </nav>
+	</header>
+	<section class="recipe-search">
+	    <h3>Need Recipe Ideas? Enter food terms to generate meal options. Store your favorite recipes and share them with others!</h3>
+	    <form id="search">
+		<input id="query" type="text">
+		<input type="submit" id="submit" value="Get Recipes!">
+	    </form>
+	    <div class="search-results">
+		<h4>Recipes</h4>
+		<div class="receipe-summary clearfix">
+		    <figure class="image">
+			<img class="image" src="tacos.jpg" width="80" height="80">
+		    </figure>
+		    <div class="summary">
+			<p class="rtitle">Lasagna cake</p>
+			<p><span class="data-labels">Category: </span><span class="category">Italian</span></p>
+			<p><span class="data-labels">Subcategory: </span><span class="subcategory">Diner</span></p>
+			<p><span class="data-labels">Rating: </span><span class="rating">5</span></p>
+			<a href="#" class="link">See instructions</a>
+		    </div>
+		    <div class="details">
+			<h2>Ingredients</h2>
+			<ul class="ingredients">
+			    <li>Ground Beef - 400 Grams</li>
+			    <li>No-boil Lasagna Noodles - 1.0</li>
+			    <li>Spaghetti Sauce - 800 Grams</li>
+			</ul>
+			<h2>Instructions</h2>
+			<span class="instructions">
+1) Preheat oven to 190°C (375°F).\r\n\r\n2) Brown ground beef in a pan. Drain fat. Add tomato sauce and Italian seasoning. Remove from heat.\r\n\r\n3) In a casserole dish, spread a layer of sauce mixture on the bottom. \r\n\r\n4) Spread a thin layer of ricotta cheese over the lasagne noodles and make a layer in the casserole dish, ricotta-side up. \r\n\r\n5) Spread a layer of sauce mixture over the noodles.\r\n\r\n6) Sprinkle a layer of mozzarella cheese over the sauce.\r\n\r\n7) Repeat layers (ricotta-noodles, sauce, mozzarella) until all ingredients are used up. Make sure the top layer is mozzarella.\r\n\r\n8) Cover with aluminum foil and bake 35-45 minutes. Remove foil and bake another 15-20 minutes, until lightly browned.\r\n\r\n9) Let stand 10 minutes before serving.
+			</span>
+			
+		    </div>
+		</div>
+		
+		<!-- <button class="favorite">Favorite</button> -->
+		<!-- <button id="previous">Previous</button>   <button id="next">Next</button> -->
+	    </div>
 
             <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>   
             <script type='text/javascript' src='app.js'></script>
-          </section>
-        </body>
-        </html>
+        </section>
+    </body>
+</html>
