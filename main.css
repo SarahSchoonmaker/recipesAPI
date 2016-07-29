@@ -1,5 +1,13 @@
 
 /*Global styles*/
+* {
+  box-sizing: border-box;
+}
+
+figure {
+  margin-top: 0;
+}
+
 
 html {
   background: url(kitchen.jpg) no-repeat center center fixed; 
@@ -24,19 +32,9 @@ h1 {
   font-weight: bold;
 }
 
-.title,.category,.subcategory,.stars,.recipe {
-  margin-bottom: .5em;
-  color: #AB4438;
-  text-align: center;
-  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;;
-  font-size: 30px;
-  font-weight: bold;
+.clearfix {
+  overflow: auto;
 }
-
-#recipe-title,#recipe-subcategory,#stars,#star-rating,#recipe-details {
-
-}
-
 
 h3 {
   color: #AB4438;
@@ -54,7 +52,7 @@ h4 {
   font-size: 25px;
   font-weight: bold;
   text-align: center;
-
+  margin-bottom: 1em;
 }
 
 /*Header Stypes*/
@@ -115,6 +113,7 @@ h4 {
 
 /*Recipe search*/
 
+
 #search {
   text-align: center;
   margin-top: 1em;
@@ -123,7 +122,6 @@ h4 {
 
 
 .search-results {
-  box-sizing: border-box;
   width: 100%;
   border: 1em solid #11362C;
   padding: 1em;
@@ -137,9 +135,41 @@ h4 {
   display: none;
 }
 
-.image {
-  margin-top: 1em;
+
+/* Receipe summary */
+.receipe-summary {
+  border: 1px solid;
+  background-color: white;
+  padding: .5em;
+  margin-bottom: .5em;
 }
-.recipe-details {
-  text-align: center;
+
+.receipe-summary .data-labels {
+  font-weight: bold;
+}
+
+.receipe-summary .rtitle {
+  font-weight: bold;
+  font-size: 1.5em;
+  color:#AB4438;
+}
+
+.receipe-summary .link {
+  float: right;
+}
+
+.receipe-summary > .image {
+  min-width: 20%;
+}
+.receipe-summary > .summary {
+  min-width: 80%;
+}
+
+.receipe-summary > .image, .receipe-summary > .summary {
+  float: left;
+
+}
+
+.receipe-summary > .details .insctructions {
+  white-space: pre-line;
 }
