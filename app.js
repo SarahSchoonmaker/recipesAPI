@@ -3,11 +3,19 @@ var showRecipe = function(recipes) {
     // clone result template 
     var result = $('.search-results .summary').clone(); 
     // Set the recipe properties in result
-    var recipesElem = result.find('.image .rtitle .category .subcategory .rating');
+    var image = result.find('.image');
     recipesElem.img(image.photourl);
+
+    var title = result.find('.rtitle')
     recipesElem.text(rtitle.title);
+
+    var category = result.find('.category')
     recipesElem.text(category.category);
+
+    var subcategory = result.find('.subcategory')
     recipesElem.text(subcategory.subcategory);
+
+    var rating = result.find('.rating')
     recipesElem.text(rating.starrating);
 
     return result;
@@ -16,12 +24,14 @@ var showRecipe = function(recipes) {
 // Send API request
 
 function getRecipes(getresults) {
-    var input = $('#submit').val();
+    var request = {
+    submit: $('#submit').val();
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var url = "http://api2.bigoven.com/recipe/" + PhotoUrl + Title + Category + SubCategory + StarRating + "?api_key="+apiKey;
-    
+    };
     $.ajax({
         type: "GET",
+        data: request,
         dataType: 'json',
         cache: false,
         url: url,
@@ -30,13 +40,13 @@ function getRecipes(getresults) {
         }
     })
     .done(function(result){ 
-        var searchResults = showRecipe(input, url);
+        var searchResults = showRecipe(request.submit, result.items.length);
 
         $('.search-results').html(searchResults);
         
         $.each(result.items, function(i, item) {
             var ritems = showRecipe(item);
-            $('.results').append(ritems);
+            $('.summary').append(ritems);
         });
     })
 };
