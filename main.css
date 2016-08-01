@@ -68,6 +68,7 @@ h4 {
 .topnav a {
    color: #FFFFFA;
    text-decoration: none;
+   padding: 1em;
 }
 
 .topnav {
@@ -78,7 +79,7 @@ h4 {
   font-size: 1.04rem;
   margin-top: 1em;
   display: inline-block;
-  margin-bottom: .5em;
+  margin-bottom: .8em;
 }
 
 .topnav a:hover {
@@ -106,10 +107,10 @@ h4 {
   padding: 50px;
 }*/
 
-/*#submit:hover, #next:hover, #previous:hover {
+#submit:hover, #next:hover, #previous:hover {
   background: #24b662;
   cursor: pointer; cursor: hand;
-}*/
+}
 
 /*Recipe search*/
 
