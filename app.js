@@ -25,10 +25,10 @@ var showRecipe = function(recipes) {
 
 function getRecipes(getresults) {
     var request = {
-    submit: $('#submit').val();
+    submit: getresults
+    };
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var url = "http://api2.bigoven.com/recipe/" + PhotoUrl + Title + Category + SubCategory + StarRating + "?api_key="+apiKey;
-    };
     $.ajax({
         type: "GET",
         data: request,
