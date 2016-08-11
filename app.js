@@ -50,11 +50,11 @@ function getRecipes(foodTerm, page) {
     rpp: 10,
     api_key: apiKey
     };
-    var url = "http://api2.bigoven.com/recipes";
+    var url = "https://api2.bigoven.com/recipes";
     $.ajax({
         type: "GET",
         data: request,
-        dataType: 'json',
+        dataType: 'jsonp',
         cache: false,
         url: url,
     })
@@ -78,11 +78,11 @@ function getInstructions(recipeID, detailElement) {
     var request = {
      api_key: "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1"
     }
-    var url = "http://api2.bigoven.com/recipe/" + recipeID;
+    var url = "https://api2.bigoven.com/recipe/" + recipeID;
     $.ajax({
         type: "GET",
         data: request,
-        dataType: 'json',
+        dataType: 'jsonp',
         cache: true,
         url: url
     })
