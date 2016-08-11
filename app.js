@@ -42,7 +42,6 @@ function showDetails(details, detailElement){
 // Send API request
 var currentPage = 1;
 function getRecipes(foodTerm, page) {
-    console.log(foodTerm);
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var request = {
     any_kw: foodTerm,
