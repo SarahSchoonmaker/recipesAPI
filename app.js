@@ -53,7 +53,7 @@ function getRecipes(foodTerm, page) {
     $.ajax({
         type: "GET",
         data: request,
-        dataType: 'jsonp',
+        dataType: 'json',
         cache: false,
         url: url,
     })
@@ -81,7 +81,7 @@ function getInstructions(recipeID, detailElement) {
     $.ajax({
         type: "GET",
         data: request,
-        dataType: 'jsonp',
+        dataType: 'json',
         cache: true,
         url: url
     })
