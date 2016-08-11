@@ -1,87 +1,121 @@
 
-var showRecipe = function(recipes) {
+var showRecipe = function(recipe) {
     // clone result template 
-    var result = $('.search-results .summary').clone(); 
+    var result = $('.templates .recipe-summary').clone(); 
+    result.attr("data-id", recipe.RecipeID);
     // Set the recipe properties in result
-    var image = result.find('.image');
-    recipesElem.img(image.photourl);
+    var photo = result.find('.photo');
+    photo.attr("src", recipe.PhotoUrl);
 
     var title = result.find('.rtitle')
-    recipesElem.text(rtitle.title);
+    title.text(recipe.Title);
 
     var category = result.find('.category')
-    recipesElem.text(category.category);
+    
+    if (recipe.Category==='') {
+        category.text("Not Listed");
+    } else {
+      category.text(recipe.Category);
+    }
 
     var subcategory = result.find('.subcategory')
-    recipesElem.text(subcategory.subcategory);
-
+    if (recipe.Subcategory==='') {
+        subcategory.text("Not Listed");
+    } else {
+      subcategory.text(recipe.Subcategory);
+    }
+    
     var rating = result.find('.rating')
-    recipesElem.text(rating.starrating);
+    rating.text(recipe.StarRating.toFixed(2));
 
     return result;
 }
 
-// Send API request
+function showDetails(details, detailElement){
+    detailElement.find('.instructions').text(details.Instructions)
+    for(var i=0; i < details.Ingredients.length; i++) {
+    detailElement.find('.ingredients').append("<li> " + " " + details.Ingredients[i].MetricDisplayQuantity + " " + details.Ingredients[i].MetricUnit + " " + details.Ingredients[i].Name + " </li>")
+    }
+}
+    
 
-function getRecipes(getresults) {
-    var request = {
-    submit: getresults
-    };
+// Send API request
+var currentPage = 1;
+function getRecipes(foodTerm, page) {
+    console.log(foodTerm);
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
-    var url = "http://api2.bigoven.com/recipe/" + PhotoUrl + Title + Category + SubCategory + StarRating + "?api_key="+apiKey;
+    var request = {
+    any_kw: foodTerm,
+    pg: page,
+    rpp: 10,
+    api_key: apiKey
+    };
+    var url = "http://api2.bigoven.com/recipes";
     $.ajax({
         type: "GET",
         data: request,
         dataType: 'json',
         cache: false,
         url: url,
-        success: function (data) {
-            alert('success');
+    })
+    .done(function(recipes){  
+        for(var i=0; i < recipes.Results.length; i++) {
+            var recipeHtml = showRecipe(recipes.Results[i]);
+            $('.recipe-list').append(recipeHtml)
+        }
+        console.log(recipes);
+        if (recipes.ResultCount/10 <= page) {
+        $('#next').hide();  
+        }
+        else {
+        $('#next').show(); 
         }
     })
-    .done(function(result){ 
-        var searchResults = showRecipe(request.submit, result.items.length);
+};
 
-        $('.search-results').html(searchResults);
-        
-        $.each(result.items, function(i, item) {
-            var ritems = showRecipe(item);
-            $('.summary').append(ritems);
-        });
+function getInstructions(recipeID, detailElement) {
+
+    var request = {
+     api_key: "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1"
+    }
+    var url = "http://api2.bigoven.com/recipe/" + recipeID;
+    $.ajax({
+        type: "GET",
+        data: request,
+        dataType: 'json',
+        cache: true,
+        url: url
     })
-};
+    .done(function(recipeDetails) {
+        showDetails(recipeDetails, detailElement);
+        console.log(recipeDetails);
+    })
 
-var showSearchResults = function(query, rresult) {
-    var results = rresult + ' results for <strong>' + query + '</strong>';
-    return results;
-};
-
-// Show results from API request
-
-function showRecipes(results) {
-    var input = results.items;
-
-    $.each(input, function (index, value) {
-        var image = value.PhotoUrl
-        var title = value.Title
-        var category = value.Category
-        var subCategory = value.SubCategory
-        var starRating = value.StarRating
-        results += '<img src="' + image + '">';
-        results += '<p>' + title + '</p>';
-        results += '<p>' + category + '</p>';
-        results += '<p>' + subcategory + '</p>';
-        results += '<p>' + starRating + '</p>';
-
-    }); 
-    
-    return results;
 }
 
-$('#submit').submit( function(e){
+$('#search').submit( function(e){
     e.preventDefault();
-    $('.search-results').html('');
-    var getresults = $(this).find("input[name='getresults']").val();
-    getRecipes(getresults);
+    var userInput = $(this).find("input[name='food']").val();
+    getRecipes(userInput, currentPage);
+    $('.search-results').show();
+    
 });
+
+// The on function allows us to assign events to elements that
+// are not yet on the page. Add on function to parent and the click
+// function to the child element. 
+
+$('.search-results').on("click", ".instructions-link", function (event){
+    event.preventDefault();
+    var parent = $(this).parent().parent().parent()
+    parent.find(".details").toggleClass("hidden");
+    var id = parent.attr("data-id");
+    getInstructions(id,parent.find(".details"));
+})
+
+$('#next').click(function(event) {
+    event.preventDefault();
+    var userInput = $('#query').val();
+    getRecipes(userInput,++currentPage)
+})
 
