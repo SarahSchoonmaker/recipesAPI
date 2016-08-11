@@ -97,8 +97,10 @@ $('#search').submit( function(e){
     var userInput = $(this).find("input[name='food']").val();
     getRecipes(userInput, currentPage);
     $('.search-results').show();
+    $('#query').val('');
     
 });
+
 
 // The on function allows us to assign events to elements that
 // are not yet on the page. Add on function to parent and the click

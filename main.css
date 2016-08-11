@@ -24,11 +24,12 @@ body {
 }
 
 h1 {
-  margin-bottom: .5em;
+  margin-bottom: .2em;
+  padding-top: .5em;
   color: #AB4438;
   text-align: center;
   font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;;
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -70,7 +71,7 @@ h4 {
   display: none;
 }
 
-/*Header Stypes*/
+/*Header Styles*/
 .header {
   background-color: #11362C;
   padding-bottom: 2em;
@@ -102,8 +103,38 @@ h4 {
   color: #230C26;
 }
 
+#query {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2em;
+    width: 6em;
+    font-size: 18px;
+}
+
+
+#submit {
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: Arial;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  background: #11362C;
+}
+
 #submit:hover, #next:hover, #previous:hover {
-  background: #24b662;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: Arial;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  background: #1B266E;
   cursor: pointer; cursor: hand;
 }
 
@@ -126,11 +157,17 @@ h4 {
 
 #next {
   display: none;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: Arial;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  background: #11362C;
 }
 
-.recipe-search {
-  /*height: 100%;*/
-}
 
 /* Receipe summary */
 .recipe-summary {
