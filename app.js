@@ -1,3 +1,5 @@
+var userInput
+
 
 var showRecipe = function(recipe) {
     // clone result template 
@@ -45,6 +47,7 @@ function getRecipes(foodTerm, page) {
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var request = {
     any_kw: foodTerm,
+    is_private: false,
     pg: page,
     rpp: 10,
     api_key: apiKey
@@ -57,7 +60,8 @@ function getRecipes(foodTerm, page) {
         cache: false,
         url: url,
     })
-    .done(function(recipes){  
+    .done(function(recipes){
+        $('.loading').hide();  
         for(var i=0; i < recipes.Results.length; i++) {
             var recipeHtml = showRecipe(recipes.Results[i]);
             $('.recipe-list').append(recipeHtml)
@@ -86,15 +90,23 @@ function getInstructions(recipeID, detailElement) {
         url: url
     })
     .done(function(recipeDetails) {
+        detailElement.find('.load-ingredients').hide();
+        detailElement.find('.detail-wrap').show();
         showDetails(recipeDetails, detailElement);
         console.log(recipeDetails);
     })
-
+    .fail(function(a) {
+        detailElement.find('.load-ingredients').hide();
+        detailElement.find('.error').text(a.responseJSON.Message);
+    });
 }
 
 $('#search').submit( function(e){
     e.preventDefault();
-    var userInput = $(this).find("input[name='food']").val();
+    $('.loading').show();
+    $('#next').hide();
+    $('.recipe-list').html('')
+    userInput = $(this).find("input[name='food']").val();
     getRecipes(userInput, currentPage);
     $('.search-results').show();
     $('#query').val('');
@@ -116,7 +128,6 @@ $('.search-results').on("click", ".instructions-link", function (event){
 
 $('#next').click(function(event) {
     event.preventDefault();
-    var userInput = $('#query').val();
     getRecipes(userInput,++currentPage)
 })
 

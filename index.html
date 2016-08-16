@@ -8,8 +8,8 @@
 </head>
 <body>
 	<header class="header">
-   <h1>Recipe Ideas</h1>
-   <h3>Need meal ideas? Enter keywords to generate a list of recipes.</h3>
+   <h1>Recipe Mill</h1>
+   <h3>Enter keywords to generate a list of recipes.</h3>
    <nav class="navbar">
   </nav>
 </header>
@@ -20,6 +20,7 @@
 </form>
 <div class="search-results">
   <h4>Recipes</h4>
+  <img class="loading" src="ajax.gif"/>
   <div class="recipe-list">
   </div>
 <button id="next">Load More</button>
@@ -39,6 +40,10 @@
      </div>
    </div>
    <div class="details hidden">
+    <img class="load-ingredients" src="ajax.gif"/>
+    <div class="error">
+    </div>
+    <div class="detail-wrap">
      <h5>Ingredients</h5>
      <ul class="ingredients">
        <li></li>
@@ -48,6 +53,7 @@
      <h5 class="top">Instructions</h5>
      <span class="instructions">
     </span>
+    </div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>   
