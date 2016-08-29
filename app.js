@@ -105,7 +105,7 @@ function getInstructions(recipeID, detailElement) {
 });
 }
 
-$('#search').submit( function(e){
+$('#search').submit(function(e){
     e.preventDefault();
     $('.loading').show();
     $('#next').hide();
