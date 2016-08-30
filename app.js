@@ -1,32 +1,32 @@
 var userInput
 
 var showRecipe = function(recipe) {
-    // clone result template 
+
     var result = $('.templates .recipe-summary').clone(); 
     result.attr("data-id", recipe.RecipeID);
-    // Set the recipe properties in result
+    
     var photo = result.find('.photo');
     photo.attr("src", recipe.PhotoUrl);
 
-    var title = result.find('.rtitle')
+    var title = result.find('.rtitle');
     title.text(recipe.Title);
 
-    var category = result.find('.category')
-    
+    var category = result.find('.category');
+
     if (recipe.Category==='') {
         category.text("Not Listed");
     } else {
       category.text(recipe.Category);
   }
 
-  var subcategory = result.find('.subcategory')
+  var subcategory = result.find('.subcategory');
   if (recipe.Subcategory==='') {
     subcategory.text("Not Listed");
 } else {
-  subcategory.text(recipe.Subcategory);
+    subcategory.text(recipe.Subcategory);
 }
 
-var rating = result.find('.rating')
+var rating = result.find('.rating');
 rating.text(recipe.StarRating.toFixed(2));
 
 return result;
@@ -70,7 +70,7 @@ function getRecipes(foodTerm, page) {
                 var recipeHtml = showRecipe(recipes.Results[i]);
                 $('.recipe-list').append(recipeHtml)
             }
-            console.log(recipes);
+            
             if (recipes.ResultCount/10 <= page) {
                 $('#next').hide();  
             }
@@ -78,21 +78,11 @@ function getRecipes(foodTerm, page) {
                 $('#next').show(); 
             }
 
-        $('.loading').hide();  
-        for(var i=0; i < recipes.Results.length; i++) {
-            var recipeHtml = showRecipe(recipes.Results[i]);
-            $('.recipe-list').append(recipeHtml)
-        }
-        console.log(recipes);
-        if (recipes.ResultCount/10 <= page) {
-        $('#next').hide();  
-        }
-        else {
-        $('#next').show(); 
+            
 
         }
-    }
-});
+    });
+}
 
 function getInstructions(recipeID, detailElement) {
 
@@ -120,9 +110,9 @@ function getInstructions(recipeID, detailElement) {
 
 });
 
-     
+
 }
-    
+
 
 $('#search').submit(function(e){
     e.preventDefault();
