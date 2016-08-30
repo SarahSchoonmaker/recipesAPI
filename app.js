@@ -153,4 +153,3 @@ $('#next').click(function(event) {
     event.preventDefault();
     getRecipes(userInput,++currentPage)
 })
-
