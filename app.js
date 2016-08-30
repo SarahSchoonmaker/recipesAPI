@@ -97,9 +97,9 @@ function getRecipes(foodTerm, page) {
 function getInstructions(recipeID, detailElement) {
 
     var request = {
-
        api_key: "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1"
    }
+
    var url = "https://api2.bigoven.com/recipe/" + recipeID;
    $.ajax({
     type: "GET",
@@ -122,26 +122,7 @@ function getInstructions(recipeID, detailElement) {
 
      
 }
-    var url = "https://api2.bigoven.com/recipe/" + recipeID;
-    $.ajax({
-        type: "GET",
-        data: request,
-        dataType: 'json',
-        cache: true,
-        url: url
-    })
-    .done(function(recipeDetails) {
-        detailElement.find('.load-ingredients').hide();
-        detailElement.find('.detail-wrap').show();
-        showDetails(recipeDetails, detailElement);
-        console.log(recipeDetails);
-    })
-    .fail(function(a) {
-        detailElement.find('.load-ingredients').hide();
-        detailElement.find('.error').text(a.responseJSON.Message);
-    });
-
-}
+    
 
 $('#search').submit(function(e){
     e.preventDefault();
