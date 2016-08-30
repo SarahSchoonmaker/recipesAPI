@@ -51,12 +51,6 @@ function getRecipes(foodTerm, page) {
         rpp: 10,
         api_key: apiKey
 
-    any_kw: foodTerm,
-    is_private: false,
-    pg: page,
-    rpp: 10,
-    api_key: apiKey
-
     };
     var url = "https://api2.bigoven.com/recipes";
     $.ajax({
