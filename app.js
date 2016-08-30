@@ -92,7 +92,7 @@ function getRecipes(foodTerm, page) {
 
         }
     }
-};
+});
 
 function getInstructions(recipeID, detailElement) {
 
