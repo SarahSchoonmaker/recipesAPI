@@ -1,4 +1,8 @@
 var userInput
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9aeffbd705d4074d9b121ec982de11b9c2fd9009
 
 var showRecipe = function(recipe) {
     // clone result template 
@@ -45,11 +49,19 @@ var currentPage = 1;
 function getRecipes(foodTerm, page) {
     var apiKey = "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1";
     var request = {
+<<<<<<< HEAD
         any_kw: foodTerm,
         is_private: false,
         pg: page,
         rpp: 10,
         api_key: apiKey
+=======
+    any_kw: foodTerm,
+    is_private: false,
+    pg: page,
+    rpp: 10,
+    api_key: apiKey
+>>>>>>> 9aeffbd705d4074d9b121ec982de11b9c2fd9009
     };
     var url = "https://api2.bigoven.com/recipes";
     $.ajax({
@@ -60,6 +72,7 @@ function getRecipes(foodTerm, page) {
         url: url,
     })
     .done(function(recipes){
+<<<<<<< HEAD
         $('.loading').hide();
         if(recipes.Results.length==0) {
             $('.recipe-error').text("No recipe results")
@@ -75,6 +88,19 @@ function getRecipes(foodTerm, page) {
             else {
                 $('#next').show(); 
             }
+=======
+        $('.loading').hide();  
+        for(var i=0; i < recipes.Results.length; i++) {
+            var recipeHtml = showRecipe(recipes.Results[i]);
+            $('.recipe-list').append(recipeHtml)
+        }
+        console.log(recipes);
+        if (recipes.ResultCount/10 <= page) {
+        $('#next').hide();  
+        }
+        else {
+        $('#next').show(); 
+>>>>>>> 9aeffbd705d4074d9b121ec982de11b9c2fd9009
         }
     })
 };
@@ -82,6 +108,7 @@ function getRecipes(foodTerm, page) {
 function getInstructions(recipeID, detailElement) {
 
     var request = {
+<<<<<<< HEAD
        api_key: "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1"
    }
    var url = "https://api2.bigoven.com/recipe/" + recipeID;
@@ -103,6 +130,28 @@ function getInstructions(recipeID, detailElement) {
     detailElement.find('.error').text(a.responseJSON.Message);
 
 });
+=======
+     api_key: "08R1BCvJ6Ps0eMeMy969GZ19AYiYJXx1"
+    }
+    var url = "https://api2.bigoven.com/recipe/" + recipeID;
+    $.ajax({
+        type: "GET",
+        data: request,
+        dataType: 'json',
+        cache: true,
+        url: url
+    })
+    .done(function(recipeDetails) {
+        detailElement.find('.load-ingredients').hide();
+        detailElement.find('.detail-wrap').show();
+        showDetails(recipeDetails, detailElement);
+        console.log(recipeDetails);
+    })
+    .fail(function(a) {
+        detailElement.find('.load-ingredients').hide();
+        detailElement.find('.error').text(a.responseJSON.Message);
+    });
+>>>>>>> 9aeffbd705d4074d9b121ec982de11b9c2fd9009
 }
 
 $('#search').submit(function(e){
