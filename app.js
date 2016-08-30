@@ -120,6 +120,8 @@ function getInstructions(recipeID, detailElement) {
 
 });
 
+     
+}
     var url = "https://api2.bigoven.com/recipe/" + recipeID;
     $.ajax({
         type: "GET",
