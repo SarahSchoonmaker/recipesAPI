@@ -74,8 +74,6 @@ h4 {
   text-align: center;
 }
 
-
-
 .detail-wrap {
   display: none;
 }
@@ -157,6 +155,20 @@ h4 {
 
 /*Recipe search*/
 
+.recipe-error-wrap {
+  text-align: center;
+}
+
+.recipe-error {
+  width: 20%;
+  background-color: white;
+  color: #AB4438;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 1em;
+
+}
 
 #search {
   text-align: center;

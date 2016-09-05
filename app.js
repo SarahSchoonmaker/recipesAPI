@@ -64,11 +64,15 @@ function getRecipes(foodTerm, page) {
 
         $('.loading').hide();
         if(recipes.Results.length==0) {
-            $('.recipe-error').text("No recipe results")
+            $('.recipe-error').text("No recipe results. Please try again!")
+            $('h4').hide();
         }else {
+            $('h4').show();
+            $('.recipe-error').hide();
             for(var i=0; i < recipes.Results.length; i++) {
                 var recipeHtml = showRecipe(recipes.Results[i]);
                 $('.recipe-list').append(recipeHtml)
+
             }
             
             if (recipes.ResultCount/10 <= page) {
@@ -102,12 +106,12 @@ function getInstructions(recipeID, detailElement) {
     detailElement.find('.load-ingredients').hide();
     detailElement.find('.detail-wrap').show();
     showDetails(recipeDetails, detailElement);
-    console.log(recipeDetails);
+    
 })
    .fail(function(a) {
     detailElement.find('.load-ingredients').hide();
     detailElement.find('.error').text(a.responseJSON.Message);
-
+    
 });
 
 
