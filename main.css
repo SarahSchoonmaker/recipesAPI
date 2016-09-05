@@ -58,12 +58,23 @@ h3 {
 }
 
 h4 {
+  background-color: white;
   color: #AB4438;
   font-size: 25px;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 1em;
+  text-align: center;
 }
+.recipe-wrapper {
+  width: 10%;
+  margin: 0 auto;
+}
+
+.image-wrapper {
+  text-align: center;
+}
+
+
 
 .detail-wrap {
   display: none;
